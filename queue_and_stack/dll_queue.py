@@ -19,8 +19,10 @@ class Queue:
 
     def dequeue(self):
         #pass
-        return self.storage.remove_from_tail()
-        # ??? why does this not need (self)
+        if self.len() > 0:
+            return self.storage.remove_from_tail()
+        else:
+            pass
 
     def len(self):
         #print(self.size)
@@ -30,6 +32,7 @@ class Queue:
 
 
 test = Queue()
+print(test.len())
 test.enqueue(5)
 test.enqueue(3)
 print(test.len())
