@@ -30,7 +30,7 @@ class Queue:
         return self.storage.length
 
 
-
+"""
 test = Queue()
 print(test.len())
 test.enqueue(5)
@@ -44,7 +44,7 @@ print(test.len())
 print(test.dequeue())
 print(test.len())
 
-"""
+
 I need to better understand what "storage" is
 *is "storage" == "fopbar", or a reserver, or standard value like index or prams?
 
