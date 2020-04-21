@@ -10,6 +10,8 @@ class LRUCache:
     """
     def __init__(self, limit=10):
         #pass
+        self.cache = DoublyLinkedList()
+        self.limit = limit
         self.storage = {} #Hint: Since our cache is going to be storing key-value pairs, we might want to use a structure that is adept at handling those.
 
     """
@@ -34,3 +36,12 @@ class LRUCache:
     """
     def set(self, key, value):
         pass
+
+
+"""
+When used move to add_to_head
+
+when full remove tail
+
+based on Readme hint and need for key value sets use a {} for the sets/storage
+"""
