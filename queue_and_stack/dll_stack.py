@@ -11,12 +11,12 @@ class Stack:
 
     def push(self, value):
         #pass
-        return self.storage.add_to_head(value)
+        return self.storage.add_to_tail(value)
 
     def pop(self):
         #pass
         if self.len() > 0:
-            return self.storage.remove_from_head()
+            return self.storage.remove_from_tail()
         else:
             pass
 
@@ -30,4 +30,9 @@ test.push(300)
 test.push(400)
 print(test.pop())
 
+pop test seems to want the head not tail?
+
+of should I be Push to tail?
+
+fixed to be tail odd that head pases test to
 """
