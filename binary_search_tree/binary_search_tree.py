@@ -32,7 +32,20 @@ class BinarySearchTree:
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        #pass
+        if self.value == target:
+            return True
+        else:
+            if self.value < target:
+                if self.right is None:
+                    return False
+                else:
+                    return self.right.contains(target)
+            else:
+                if self.left is None:
+                    return False
+                else:
+                    return self.left.contains(target)
 
 
     # Return the maximum value found in the tree
@@ -71,3 +84,10 @@ class BinarySearchTree:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+test = BinarySearchTree(4)
+test.insert(5)
+test.insert(3)
+test.insert(6)
+print(test.contains(10))
