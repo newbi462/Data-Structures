@@ -104,15 +104,16 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
         #pass
-        #print(self.value)
+        if self.left: # get the right
+            self.left.in_order_print(node)
+        #print(f"print {self.value}") print will only show in an f stament why?
+        print(self.value)
+
         if self.right: # get the right
             self.right.in_order_print(node)
-        print(self.value)
-        # grater to low if right first
 
-        if self.left: #get the left
-            self.left.in_order_print(node)
-        #print(self.value)
+
+
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -123,6 +124,7 @@ class BinarySearchTree:
     # in an iterative depth first traversal
     def dft_print(self, node):
         pass
+
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
