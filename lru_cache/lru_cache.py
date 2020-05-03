@@ -1,3 +1,5 @@
+from doubly_linked_list import DoublyLinkedList
+
 class LRUCache:
     """
     Our LRUCache class keeps track of the max number of nodes it
@@ -7,7 +9,10 @@ class LRUCache:
     to every node stored in the cache.
     """
     def __init__(self, limit=10):
-        pass
+        #pass
+        self.cache = DoublyLinkedList()
+        self.limit = limit
+        self.storage = {} #Hint: Since our cache is going to be storing key-value pairs, we might want to use a structure that is adept at handling those.
 
     """
     Retrieves the value associated with the given key. Also
@@ -17,7 +22,14 @@ class LRUCache:
     key-value pair doesn't exist in the cache.
     """
     def get(self, key):
-        pass
+        #pass
+        if key in self.storage:
+            node = self.storage[key]
+            self.cache.move_to_front(node)
+            return node.value[1]
+        else: # in cases with no key
+            return None
+
 
     """
     Adds the given key-value pair to the cache. The newly-
@@ -30,4 +42,44 @@ class LRUCache:
     the newly-specified value.
     """
     def set(self, key, value):
-        pass
+        #pass
+        if key in self.storage:  # if move to head as recent
+            node = self.storage[key]
+            node.value = (key, value)
+            self.cache.move_to_front(node)
+        else:
+            if self.limit == self.cache.length: #max
+                self.storage.pop(self.cache.tail.value[0])
+                self.cache.remove_from_tail() # LRU
+
+            # add new
+            self.cache.add_to_head( (key, value) )
+            self.storage[key] = self.cache.head
+
+        #print(f"{self.storage} \n")
+
+
+
+test = LRUCache()
+test.set('item1', 'a')
+print(test.get('item1'))
+test.set('item2', 'b')
+test.set('item3', 'c')
+test.set('item4', 'd')
+test.set('item5', 'e')
+test.set('item6', 'f')
+test.set('item7', 'g')
+test.set('item8', 'a')
+test.set('item9', 'a')
+test.set('item10', 'a')
+test.set('item11', 'a')
+test.set('item5', 'a')
+print(test.get('item1'))
+
+"""
+When used move to add_to_head
+
+when full remove tail
+
+based on Readme hint and need for key value sets use a {} for the sets/storage
+"""
